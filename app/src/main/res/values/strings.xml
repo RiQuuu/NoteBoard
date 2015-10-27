@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">NoteBoard</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="imageButtonText">Image</string>
+    <string name="textButtonText">Submit</string>
+    <string name="videoButtonText">Video</string>
+    <string name="image">image</string>
+    <string name="sample">Sample</string>
+</resources>
