@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.Image;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -15,12 +17,14 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
+import android.view.SoundEffectConstants;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.MediaController;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +33,8 @@ import android.widget.VideoView;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements OnTouchListener {
 
@@ -36,9 +42,11 @@ public class MainActivity extends AppCompatActivity implements OnTouchListener {
     private EditText mEditText;
     private TextView mTextView;
     private VideoView mVideoView;
+    private MediaController mSoundView;
     private ViewGroup mRootLayout;
     private ViewGroup mRootLayout2;
     private ViewGroup mRootLayout3;
+    private ViewGroup mRootLayout4;
     private int _xDelta;
     private int _yDelta;
 
@@ -58,6 +66,9 @@ public class MainActivity extends AppCompatActivity implements OnTouchListener {
         mRootLayout3 = (ViewGroup) findViewById(R.id.root);
         mVideoView = (VideoView) mRootLayout3.findViewById(R.id.videoView);
 
+        mRootLayout4 = (ViewGroup) findViewById(R.id.root);
+        mSoundView = (MediaController) mRootLayout4.findViewById(R.id.soundView);
+
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(200, 200);
         mImageView.setLayoutParams(layoutParams);
         mImageView.setOnTouchListener(this);
@@ -70,9 +81,14 @@ public class MainActivity extends AppCompatActivity implements OnTouchListener {
         mVideoView.setLayoutParams(layoutParams3);
         mVideoView.setOnTouchListener(this);
 
+        RelativeLayout.LayoutParams layoutParams4 = new RelativeLayout.LayoutParams(200, 200);
+        mSoundView.setLayoutParams(layoutParams4);
+        mSoundView.setOnTouchListener(this);
+
         Button btn = (Button) findViewById(R.id.imageButton);
         Button btn2 = (Button) findViewById(R.id.textButton);
         Button btn3 = (Button) findViewById(R.id.videoButton);
+        Button btn4 = (Button) findViewById(R.id.soundButton);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,6 +109,14 @@ public class MainActivity extends AppCompatActivity implements OnTouchListener {
             @Override
             public void onClick(View v) {
                 selectVideo();
+                Toast.makeText(MainActivity.this, "You clicked the button!", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectSound();
                 Toast.makeText(MainActivity.this, "You clicked the button!", Toast.LENGTH_LONG).show();
             }
         });
@@ -146,6 +170,30 @@ public class MainActivity extends AppCompatActivity implements OnTouchListener {
         builder.show();
     }
 
+    private void selectSound() {
+        final CharSequence[] options = { "Record Sound", "Choose from Gallery", "Cancel" };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("Add Sound");
+        builder.setItems(options, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int item) {
+                if (options[item].equals("Record Sound")) {
+                    Intent intentSound = new Intent("android.provider.MediaStore.RECORD_SOUND");
+                    File f = new File(android.os.Environment.getExternalStorageDirectory(), "temp.jpg");
+                    intentSound.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
+                    startActivityForResult(intentSound, 1);
+                } else if (options[item].equals("Choose from Gallery")) {
+                    Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Audio.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(intent, 2);
+                } else if (options[item].equals("Cancel")) {
+                    dialog.dismiss();
+                }
+            }
+        });
+        builder.show();
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -161,8 +209,7 @@ public class MainActivity extends AppCompatActivity implements OnTouchListener {
                 Bitmap bitmap;
                 BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
 
-                bitmap = BitmapFactory.decodeFile(f.getAbsolutePath(),
-                        bitmapOptions);
+                bitmap = BitmapFactory.decodeFile(f.getAbsolutePath(), bitmapOptions);
 
                 mImageView.setImageBitmap(bitmap);
 
@@ -215,8 +262,7 @@ public class MainActivity extends AppCompatActivity implements OnTouchListener {
             case MotionEvent.ACTION_POINTER_UP:
                 break;
             case MotionEvent.ACTION_MOVE:
-                RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) view
-                        .getLayoutParams();
+                RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) view.getLayoutParams();
                 layoutParams.leftMargin = X - _xDelta;
                 layoutParams.topMargin = Y - _yDelta;
                 layoutParams.rightMargin = -250;
@@ -226,6 +272,8 @@ public class MainActivity extends AppCompatActivity implements OnTouchListener {
         }
         mRootLayout.invalidate();
         mRootLayout2.invalidate();
+        mRootLayout3.invalidate();
+        mRootLayout4.invalidate();
         return true;
     }
 

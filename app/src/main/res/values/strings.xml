@@ -5,6 +5,7 @@
     <string name="imageButtonText">Image</string>
     <string name="textButtonText">Submit</string>
     <string name="videoButtonText">Video</string>
+    <string name="soundButtonText">Sound</string>
     <string name="image">image</string>
     <string name="sample">Sample</string>
 </resources>
