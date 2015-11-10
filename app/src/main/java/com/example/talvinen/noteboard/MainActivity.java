@@ -41,11 +41,11 @@ public class MainActivity extends AppCompatActivity implements OnTouchListener {
     private ImageView mImageView;
     private EditText mEditText;
     private TextView mTextView;
-    private VideoView mVideoView;
+    //private VideoView mVideoView;
     private MediaController mSoundView;
     private ViewGroup mRootLayout;
     private ViewGroup mRootLayout2;
-    private ViewGroup mRootLayout3;
+    //private ViewGroup mRootLayout3;
     private ViewGroup mRootLayout4;
     private int _xDelta;
     private int _yDelta;
@@ -63,8 +63,8 @@ public class MainActivity extends AppCompatActivity implements OnTouchListener {
         mRootLayout2 = (ViewGroup) findViewById(R.id.root);
         mTextView = (TextView) mRootLayout2.findViewById(R.id.textView);
 
-        mRootLayout3 = (ViewGroup) findViewById(R.id.root);
-        mVideoView = (VideoView) mRootLayout3.findViewById(R.id.videoView);
+        //mRootLayout3 = (ViewGroup) findViewById(R.id.root);
+        //mVideoView = (VideoView) mRootLayout3.findViewById(R.id.videoView);
 
         mRootLayout4 = (ViewGroup) findViewById(R.id.root);
         mSoundView = (MediaController) mRootLayout4.findViewById(R.id.soundView);
@@ -77,9 +77,9 @@ public class MainActivity extends AppCompatActivity implements OnTouchListener {
         mTextView.setLayoutParams(layoutParams2);
         mTextView.setOnTouchListener(this);
 
-        RelativeLayout.LayoutParams layoutParams3 = new RelativeLayout.LayoutParams(200, 200);
-        mVideoView.setLayoutParams(layoutParams3);
-        mVideoView.setOnTouchListener(this);
+        //RelativeLayout.LayoutParams layoutParams3 = new RelativeLayout.LayoutParams(200, 200);
+        //mVideoView.setLayoutParams(layoutParams3);
+        //mVideoView.setOnTouchListener(this);
 
         RelativeLayout.LayoutParams layoutParams4 = new RelativeLayout.LayoutParams(200, 200);
         mSoundView.setLayoutParams(layoutParams4);
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements OnTouchListener {
 
         Button btn = (Button) findViewById(R.id.imageButton);
         Button btn2 = (Button) findViewById(R.id.textButton);
-        Button btn3 = (Button) findViewById(R.id.videoButton);
+        //Button btn3 = (Button) findViewById(R.id.videoButton);
         Button btn4 = (Button) findViewById(R.id.soundButton);
 
         btn.setOnClickListener(new View.OnClickListener() {
@@ -105,13 +105,13 @@ public class MainActivity extends AppCompatActivity implements OnTouchListener {
             }
         });
 
-        btn3.setOnClickListener(new View.OnClickListener() {
+        /*btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 selectVideo();
                 Toast.makeText(MainActivity.this, "You clicked the button!", Toast.LENGTH_LONG).show();
             }
-        });
+        });*/
 
         btn4.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,8 +136,8 @@ public class MainActivity extends AppCompatActivity implements OnTouchListener {
                     intentImage.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
                     startActivityForResult(intentImage, 1);
                 } else if (options[item].equals("Choose from Gallery")) {
-                    Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                    startActivityForResult(intent, 2);
+                    Intent intentImage = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(intentImage, 2);
                 } else if (options[item].equals("Cancel")) {
                     dialog.dismiss();
                 }
@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity implements OnTouchListener {
         builder.show();
     }
 
-    private void selectVideo() {
+    /*private void selectVideo() {
         final CharSequence[] options = { "Take Video", "Choose from Gallery", "Cancel" };
 
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
@@ -160,15 +160,15 @@ public class MainActivity extends AppCompatActivity implements OnTouchListener {
                     intentVideo.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
                     startActivityForResult(intentVideo, 1);
                 } else if (options[item].equals("Choose from Gallery")) {
-                    Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Video.Media.EXTERNAL_CONTENT_URI);
-                    startActivityForResult(intent, 2);
+                    Intent intentVideo = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Video.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(intentVideo, 2);
                 } else if (options[item].equals("Cancel")) {
                     dialog.dismiss();
                 }
             }
         });
         builder.show();
-    }
+    }*/
 
     private void selectSound() {
         final CharSequence[] options = { "Record Sound", "Choose from Gallery", "Cancel" };
@@ -184,8 +184,8 @@ public class MainActivity extends AppCompatActivity implements OnTouchListener {
                     intentSound.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
                     startActivityForResult(intentSound, 1);
                 } else if (options[item].equals("Choose from Gallery")) {
-                    Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Audio.Media.EXTERNAL_CONTENT_URI);
-                    startActivityForResult(intent, 2);
+                    Intent intentSound = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Audio.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(intentSound, 2);
                 } else if (options[item].equals("Cancel")) {
                     dialog.dismiss();
                 }
@@ -197,52 +197,54 @@ public class MainActivity extends AppCompatActivity implements OnTouchListener {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK) if (requestCode == 1) {
-            File f = new File(Environment.getExternalStorageDirectory().toString());
-            for (File temp : f.listFiles()) {
-                if (temp.getName().equals("temp.jpg")) {
-                    f = temp;
-                    break;
+        if (resultCode == RESULT_OK) {
+            if (requestCode == 1) {
+                File f = new File(Environment.getExternalStorageDirectory().toString());
+                for (File temp : f.listFiles()) {
+                    if (temp.getName().equals("temp.jpg")) {
+                        f = temp;
+                        break;
+                    }
                 }
-            }
-            try {
-                Bitmap bitmap;
-                BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
-
-                bitmap = BitmapFactory.decodeFile(f.getAbsolutePath(), bitmapOptions);
-
-                mImageView.setImageBitmap(bitmap);
-
-                String path = Environment
-                        .getExternalStorageDirectory()
-                        + File.separator
-                        + "Phoenix" + File.separator + "default";
-                f.delete();
-                OutputStream outFile;
-                File file = new File(path, String.valueOf(System.currentTimeMillis()) + ".jpg");
                 try {
-                    outFile = new FileOutputStream(file);
-                    bitmap.compress(Bitmap.CompressFormat.JPEG, 85, outFile);
-                    outFile.flush();
-                    outFile.close();
+                    Bitmap bitmap;
+                    BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
+
+                    bitmap = BitmapFactory.decodeFile(f.getAbsolutePath(), bitmapOptions);
+
+                    mImageView.setImageBitmap(bitmap);
+
+                    String path = Environment
+                            .getExternalStorageDirectory()
+                            + File.separator
+                            + "Phoenix" + File.separator + "default";
+                    f.delete();
+                    OutputStream outFile;
+                    File file = new File(path, String.valueOf(System.currentTimeMillis()) + ".jpg");
+                    try {
+                        outFile = new FileOutputStream(file);
+                        bitmap.compress(Bitmap.CompressFormat.JPEG, 85, outFile);
+                        outFile.flush();
+                        outFile.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        } else if (requestCode == 2) {
+            } else if (requestCode == 2) {
 
-            Uri selectedImage = data.getData();
-            String[] filePath = {MediaStore.Images.Media.DATA};
-            Cursor c = getContentResolver().query(selectedImage, filePath, null, null, null);
-            c.moveToFirst();
-            int columnIndex = c.getColumnIndex(filePath[0]);
-            String picturePath = c.getString(columnIndex);
-            c.close();
-            Bitmap thumbnail = (BitmapFactory.decodeFile(picturePath));
-            Log.w("path of image ...***...", picturePath + "");
-            mImageView.setImageBitmap(thumbnail);
+                Uri selectedImage = data.getData();
+                String[] filePath = {MediaStore.Images.Media.DATA};
+                Cursor c = getContentResolver().query(selectedImage, filePath, null, null, null);
+                c.moveToFirst();
+                int columnIndex = c.getColumnIndex(filePath[0]);
+                String picturePath = c.getString(columnIndex);
+                c.close();
+                Bitmap thumbnail = (BitmapFactory.decodeFile(picturePath));
+                Log.w("path of image ...***...", picturePath + "");
+                mImageView.setImageBitmap(thumbnail);
+            }
         }
     }
 
@@ -272,7 +274,7 @@ public class MainActivity extends AppCompatActivity implements OnTouchListener {
         }
         mRootLayout.invalidate();
         mRootLayout2.invalidate();
-        mRootLayout3.invalidate();
+        //mRootLayout3.invalidate();
         mRootLayout4.invalidate();
         return true;
     }

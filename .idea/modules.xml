@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/NoteBoard.iml" filepath="$PROJECT_DIR$/NoteBoard.iml" />
+      <module fileurl="file://$PROJECT_DIR$/NoteBoardGit.iml" filepath="$PROJECT_DIR$/NoteBoardGit.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
