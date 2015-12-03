@@ -103,4 +103,4 @@
         android:layout_alignBottom="@+id/videoView" />
 
 </RelativeLayout>
-<!-- From: file:/C:/Users/Talvinen/AndroidStudioProjects/NoteBoardGit/app/src/main/res/layout/activity_main.xml -->
+<!-- From: file:/C:/Users/Talvinen/AndroidStudioProjects/NoteBoard/app/src/main/res/layout/activity_main.xml -->

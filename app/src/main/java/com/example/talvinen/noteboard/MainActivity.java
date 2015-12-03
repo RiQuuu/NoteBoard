@@ -32,6 +32,7 @@ import android.widget.VideoView;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,12 +42,11 @@ public class MainActivity extends AppCompatActivity implements OnTouchListener {
     private ImageView mImageView;
     private EditText mEditText;
     private TextView mTextView;
-    //private VideoView mVideoView;
     private MediaController mSoundView;
     private ViewGroup mRootLayout;
     private ViewGroup mRootLayout2;
-    //private ViewGroup mRootLayout3;
     private ViewGroup mRootLayout4;
+    private MediaPlayer mediaPlayer = null;
     private int _xDelta;
     private int _yDelta;
 
@@ -63,9 +63,6 @@ public class MainActivity extends AppCompatActivity implements OnTouchListener {
         mRootLayout2 = (ViewGroup) findViewById(R.id.root);
         mTextView = (TextView) mRootLayout2.findViewById(R.id.textView);
 
-        //mRootLayout3 = (ViewGroup) findViewById(R.id.root);
-        //mVideoView = (VideoView) mRootLayout3.findViewById(R.id.videoView);
-
         mRootLayout4 = (ViewGroup) findViewById(R.id.root);
         mSoundView = (MediaController) mRootLayout4.findViewById(R.id.soundView);
 
@@ -77,17 +74,12 @@ public class MainActivity extends AppCompatActivity implements OnTouchListener {
         mTextView.setLayoutParams(layoutParams2);
         mTextView.setOnTouchListener(this);
 
-        //RelativeLayout.LayoutParams layoutParams3 = new RelativeLayout.LayoutParams(200, 200);
-        //mVideoView.setLayoutParams(layoutParams3);
-        //mVideoView.setOnTouchListener(this);
-
         RelativeLayout.LayoutParams layoutParams4 = new RelativeLayout.LayoutParams(200, 200);
         mSoundView.setLayoutParams(layoutParams4);
         mSoundView.setOnTouchListener(this);
 
         Button btn = (Button) findViewById(R.id.imageButton);
         Button btn2 = (Button) findViewById(R.id.textButton);
-        //Button btn3 = (Button) findViewById(R.id.videoButton);
         Button btn4 = (Button) findViewById(R.id.soundButton);
 
         btn.setOnClickListener(new View.OnClickListener() {
@@ -104,14 +96,6 @@ public class MainActivity extends AppCompatActivity implements OnTouchListener {
                 mTextView.setText(mEditText.getText());
             }
         });
-
-        /*btn3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectVideo();
-                Toast.makeText(MainActivity.this, "You clicked the button!", Toast.LENGTH_LONG).show();
-            }
-        });*/
 
         btn4.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,30 +129,6 @@ public class MainActivity extends AppCompatActivity implements OnTouchListener {
         });
         builder.show();
     }
-
-    /*private void selectVideo() {
-        final CharSequence[] options = { "Take Video", "Choose from Gallery", "Cancel" };
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-        builder.setTitle("Add Video");
-        builder.setItems(options, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int item) {
-                if (options[item].equals("Take Video")) {
-                    Intent intentVideo = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
-                    File f = new File(android.os.Environment.getExternalStorageDirectory(), "temp.jpg");
-                    intentVideo.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
-                    startActivityForResult(intentVideo, 1);
-                } else if (options[item].equals("Choose from Gallery")) {
-                    Intent intentVideo = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Video.Media.EXTERNAL_CONTENT_URI);
-                    startActivityForResult(intentVideo, 2);
-                } else if (options[item].equals("Cancel")) {
-                    dialog.dismiss();
-                }
-            }
-        });
-        builder.show();
-    }*/
 
     private void selectSound() {
         final CharSequence[] options = { "Record Sound", "Choose from Gallery", "Cancel" };

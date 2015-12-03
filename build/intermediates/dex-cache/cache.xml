@@ -2,32 +2,32 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Talvinen\AndroidStudioProjects\NoteBoardGit\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
-        <dex dex="C:\Users\Talvinen\AndroidStudioProjects\NoteBoardGit\app\build\intermediates\pre-dexed\debug\classes-289582dfa86fb388b39a01661f60e5bc19421254.jar" />
-    </item>
-    <item
-        jar="C:\Users\Talvinen\AndroidStudioProjects\NoteBoardGit\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\jars\libs\internal_impl-23.0.1.jar"
+        jar="C:\Users\Talvinen\AndroidStudioProjects\NoteBoard\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\jars\libs\internal_impl-23.0.1.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
-        <dex dex="C:\Users\Talvinen\AndroidStudioProjects\NoteBoardGit\app\build\intermediates\pre-dexed\debug\internal_impl-23.0.1-4fccd7051fef5b3dbe28d42e0702f0f0c2343c08.jar" />
+        <dex dex="C:\Users\Talvinen\AndroidStudioProjects\NoteBoard\app\build\intermediates\pre-dexed\debug\internal_impl-23.0.1-b918891cab79b6c3e1d0f7a1a1b47b901276e3f7.jar" />
     </item>
     <item
-        jar="C:\Users\Talvinen\AndroidStudioProjects\NoteBoardGit\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.1\jars\classes.jar"
+        jar="C:\Users\Talvinen\AndroidStudioProjects\NoteBoard\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\jars\classes.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
-        <dex dex="C:\Users\Talvinen\AndroidStudioProjects\NoteBoardGit\app\build\intermediates\pre-dexed\debug\classes-a886810b8e50e1dcdfa7467870309f66dee53135.jar" />
+        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
+        <dex dex="C:\Users\Talvinen\AndroidStudioProjects\NoteBoard\app\build\intermediates\pre-dexed\debug\classes-03465ad3a900c0164bc8d6d1eb7d6bc4aaf3a270.jar" />
     </item>
     <item
         jar="C:\Users\Talvinen\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.0.1\support-annotations-23.0.1.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
-        <dex dex="C:\Users\Talvinen\AndroidStudioProjects\NoteBoardGit\app\build\intermediates\pre-dexed\debug\support-annotations-23.0.1-1c17dcb416263a7a614bf2a99ad6c693a75fc76d.jar" />
+        <dex dex="C:\Users\Talvinen\AndroidStudioProjects\NoteBoard\app\build\intermediates\pre-dexed\debug\support-annotations-23.0.1-1c17dcb416263a7a614bf2a99ad6c693a75fc76d.jar" />
+    </item>
+    <item
+        jar="C:\Users\Talvinen\AndroidStudioProjects\NoteBoard\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
+        <dex dex="C:\Users\Talvinen\AndroidStudioProjects\NoteBoard\app\build\intermediates\pre-dexed\debug\classes-fed2eb274d73567993f8f0a646b8bcd70bff25cc.jar" />
     </item>
 
 </items>
