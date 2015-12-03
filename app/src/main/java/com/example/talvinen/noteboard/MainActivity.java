@@ -1,52 +1,42 @@
 package com.example.talvinen.noteboard;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
-import android.view.SoundEffectConstants;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.MediaController;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.VideoView;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements OnTouchListener {
+public class MainActivity extends Activity implements OnTouchListener{
 
     private ImageView mImageView;
     private EditText mEditText;
     private TextView mTextView;
-    private MediaController mSoundView;
     private ViewGroup mRootLayout;
     private ViewGroup mRootLayout2;
-    private ViewGroup mRootLayout4;
-    private MediaPlayer mediaPlayer = null;
     private int _xDelta;
     private int _yDelta;
 
@@ -63,9 +53,6 @@ public class MainActivity extends AppCompatActivity implements OnTouchListener {
         mRootLayout2 = (ViewGroup) findViewById(R.id.root);
         mTextView = (TextView) mRootLayout2.findViewById(R.id.textView);
 
-        mRootLayout4 = (ViewGroup) findViewById(R.id.root);
-        mSoundView = (MediaController) mRootLayout4.findViewById(R.id.soundView);
-
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(200, 200);
         mImageView.setLayoutParams(layoutParams);
         mImageView.setOnTouchListener(this);
@@ -74,13 +61,8 @@ public class MainActivity extends AppCompatActivity implements OnTouchListener {
         mTextView.setLayoutParams(layoutParams2);
         mTextView.setOnTouchListener(this);
 
-        RelativeLayout.LayoutParams layoutParams4 = new RelativeLayout.LayoutParams(200, 200);
-        mSoundView.setLayoutParams(layoutParams4);
-        mSoundView.setOnTouchListener(this);
-
         Button btn = (Button) findViewById(R.id.imageButton);
         Button btn2 = (Button) findViewById(R.id.textButton);
-        Button btn4 = (Button) findViewById(R.id.soundButton);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,14 +76,6 @@ public class MainActivity extends AppCompatActivity implements OnTouchListener {
             @Override
             public void onClick(View v) {
                 mTextView.setText(mEditText.getText());
-            }
-        });
-
-        btn4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectSound();
-                Toast.makeText(MainActivity.this, "You clicked the button!", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -122,30 +96,6 @@ public class MainActivity extends AppCompatActivity implements OnTouchListener {
                 } else if (options[item].equals("Choose from Gallery")) {
                     Intent intentImage = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                     startActivityForResult(intentImage, 2);
-                } else if (options[item].equals("Cancel")) {
-                    dialog.dismiss();
-                }
-            }
-        });
-        builder.show();
-    }
-
-    private void selectSound() {
-        final CharSequence[] options = { "Record Sound", "Choose from Gallery", "Cancel" };
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-        builder.setTitle("Add Sound");
-        builder.setItems(options, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int item) {
-                if (options[item].equals("Record Sound")) {
-                    Intent intentSound = new Intent("android.provider.MediaStore.RECORD_SOUND");
-                    File f = new File(android.os.Environment.getExternalStorageDirectory(), "temp.jpg");
-                    intentSound.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
-                    startActivityForResult(intentSound, 1);
-                } else if (options[item].equals("Choose from Gallery")) {
-                    Intent intentSound = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Audio.Media.EXTERNAL_CONTENT_URI);
-                    startActivityForResult(intentSound, 2);
                 } else if (options[item].equals("Cancel")) {
                     dialog.dismiss();
                 }
@@ -234,8 +184,6 @@ public class MainActivity extends AppCompatActivity implements OnTouchListener {
         }
         mRootLayout.invalidate();
         mRootLayout2.invalidate();
-        //mRootLayout3.invalidate();
-        mRootLayout4.invalidate();
         return true;
     }
 
