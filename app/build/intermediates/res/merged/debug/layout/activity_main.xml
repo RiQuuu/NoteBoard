@@ -24,17 +24,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/textButtonText"
-        android:id="@+id/textButton"
-        android:layout_alignTop="@+id/imageButton"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/videoButtonText"
-        android:id="@+id/videoButton"
+        android:text="@string/imageButtonText2"
+        android:id="@+id/imageButton2"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/imageButton"
         android:layout_toEndOf="@+id/imageButton" />
@@ -42,24 +33,29 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/soundButtonText"
-        android:id="@+id/soundButton"
+        android:text="@string/textButtonText"
+        android:id="@+id/textButton"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/videoButton"
-        android:layout_toEndOf="@+id/videoButton" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/camera1"
-        android:src="@drawable/camera"
         android:contentDescription="@string/image"
         android:layout_below="@+id/imageButton"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/videoButton"
-        android:layout_toStartOf="@+id/videoButton"
-        android:layout_alignBottom="@+id/videoView" />
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/camera2"
+        android:layout_below="@+id/camera1"
+        android:contentDescription="@string/image"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -67,19 +63,17 @@
         android:inputType="textMultiLine"
         android:ems="10"
         android:id="@+id/editText"
-        android:layout_alignBottom="@+id/textButton"
+        android:layout_alignBottom="@+id/camera1"
         android:layout_toLeftOf="@+id/textButton"
-        android:layout_toEndOf="@+id/soundButton"
-        android:layout_toRightOf="@+id/soundButton" />
+        android:layout_toStartOf="@+id/textButton" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/sample"
         android:id="@+id/textView"
-        android:layout_below="@+id/camera1"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/editText"
+        android:layout_alignParentRight="true" />
 
 </RelativeLayout>
 <!-- From: file:/C:/Users/Talvinen/AndroidStudioProjects/NoteBoard/app/src/main/res/layout/activity_main.xml -->

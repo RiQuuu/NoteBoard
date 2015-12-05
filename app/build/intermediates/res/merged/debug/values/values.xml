@@ -214,15 +214,14 @@
     <string name="app_name">NoteBoard</string>
     <string name="image">image</string>
     <string name="imageButtonText">Image</string>
+    <string name="imageButtonText2">Image</string>
     <string name="sample">Sample</string>
-    <string name="soundButtonText">Sound</string>
     <!-- From: file:/C:/Users/Talvinen/AndroidStudioProjects/NoteBoard/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
     <eat-comment/>
     <string name="status_bar_notification_info_overflow">999+</string>
     <!-- From: file:/C:/Users/Talvinen/AndroidStudioProjects/NoteBoard/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="textButtonText">Submit</string>
-    <string name="videoButtonText">Video</string>
     <!-- From: file:/C:/Users/Talvinen/AndroidStudioProjects/NoteBoard/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
     <eat-comment/>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
