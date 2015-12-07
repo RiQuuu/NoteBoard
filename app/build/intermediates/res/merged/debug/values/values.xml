@@ -23,6 +23,11 @@
     <color name="background_floating_material_light">@android:color/white</color>
     <color name="background_material_dark">@color/material_grey_850</color>
     <color name="background_material_light">@color/material_grey_50</color>
+    <!-- From: file:/C:/Users/Talvinen/AndroidStudioProjects/NoteBoard/app/src/main/res/values/color.xml -->
+    <eat-comment/>
+    <color name="black">#FF1A1A1A</color>
+    <!-- From: file:/C:/Users/Talvinen/AndroidStudioProjects/NoteBoard/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
+    <eat-comment/>
     <color name="bright_foreground_disabled_material_dark">#80ffffff</color>
     <color name="bright_foreground_disabled_material_light">#80000000</color>
     <color name="bright_foreground_inverse_material_dark">@color/bright_foreground_material_light</color>
@@ -37,6 +42,11 @@
     <color name="dim_foreground_material_light">#ff323232</color>
     <color name="foreground_material_dark">@android:color/white</color>
     <color name="foreground_material_light">@android:color/black</color>
+    <!-- From: file:/C:/Users/Talvinen/AndroidStudioProjects/NoteBoard/app/src/main/res/values/color.xml -->
+    <eat-comment/>
+    <color name="grey">#FFE0E3DC</color>
+    <!-- From: file:/C:/Users/Talvinen/AndroidStudioProjects/NoteBoard/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
+    <eat-comment/>
     <color name="highlighted_text_material_dark">#6680cbc4</color>
     <color name="highlighted_text_material_light">#66009688</color>
     <color name="hint_foreground_material_dark">@color/bright_foreground_disabled_material_dark</color>
@@ -53,6 +63,11 @@
     <color name="material_grey_800">#ff424242</color>
     <color name="material_grey_850">#ff303030</color>
     <color name="material_grey_900">#ff212121</color>
+    <!-- From: file:/C:/Users/Talvinen/AndroidStudioProjects/NoteBoard/app/src/main/res/values/color.xml -->
+    <eat-comment/>
+    <color name="orange">#FFFFF157</color>
+    <!-- From: file:/C:/Users/Talvinen/AndroidStudioProjects/NoteBoard/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
+    <eat-comment/>
     <color name="primary_dark_material_dark">@android:color/black</color>
     <color name="primary_dark_material_light">@color/material_grey_600</color>
     <color name="primary_material_dark">@color/material_grey_900</color>

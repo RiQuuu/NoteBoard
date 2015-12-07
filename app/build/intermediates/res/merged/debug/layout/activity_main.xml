@@ -10,16 +10,19 @@
     tools:context=".MainActivity"
     android:id="@+id/root"
     android:focusable="true"
-    android:focusableInTouchMode="true" >
+    android:focusableInTouchMode="true"
+    android:background="@color/black" >
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:text="@string/imageButtonText"
         android:id="@+id/imageButton"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:background="@drawable/roundcorner"
+        android:layout_marginBottom="10dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -28,25 +31,31 @@
         android:id="@+id/textButton"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/roundcorner"
+        android:layout_marginBottom="10dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Save"
         android:id="@+id/btnSave"
-        android:layout_alignBottom="@+id/editText"
+        android:background="@drawable/roundcorner"
+        android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/imageButton"
-        android:layout_toEndOf="@+id/imageButton" />
+        android:layout_toEndOf="@+id/imageButton"
+        android:layout_marginLeft="10dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Delete"
         android:id="@+id/btnDelete"
-        android:layout_alignParentTop="true"
+        android:background="@drawable/roundcorner"
+        android:layout_alignTop="@+id/btnSave"
         android:layout_toRightOf="@+id/btnSave"
-        android:layout_toEndOf="@+id/btnSave" />
+        android:layout_toEndOf="@+id/btnSave"
+        android:layout_marginLeft="10dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -54,9 +63,12 @@
         android:inputType="textMultiLine"
         android:ems="20"
         android:id="@+id/editText"
-        android:layout_alignBottom="@+id/textButton"
+        android:background="@color/orange"
+        android:layout_alignTop="@+id/textButton"
         android:layout_toLeftOf="@+id/textButton"
-        android:layout_toStartOf="@+id/textButton" />
+        android:layout_toStartOf="@+id/textButton"
+        android:layout_marginRight="10dp"
+        android:layout_alignBottom="@+id/textButton" />
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -70,8 +82,9 @@
         android:id="@+id/root2"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        android:layout_below="@+id/imageButton"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/roundcorner2"
+        android:layout_below="@+id/imageButton">
 
         <ImageView
             android:layout_width="wrap_content"
